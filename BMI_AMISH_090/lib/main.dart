@@ -13,6 +13,7 @@ class BMI extends StatelessWidget {
     return MaterialApp(
       home: Input(),
       theme: ThemeData.dark(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
