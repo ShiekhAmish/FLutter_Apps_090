@@ -20,55 +20,51 @@ class _InputState extends State<Input> {
           body: Column(
         children: [
           Expanded(child: Row(
-            children: [
-              Expanded(child: Container(
-                margin: EdgeInsets.all(15.0),
-                decoration: BoxDecoration(
-                  color: Colors.blueAccent.shade200,
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
+            children:  [
+              Expanded(child: RepeatContainer(
+                colors: Colors.red,
               ),),
-              Expanded(child: Container(
-                margin: EdgeInsets.all(15.0),
-                decoration: BoxDecoration(
-                  color: Colors.blueAccent.shade200,
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
+              Expanded(child: RepeatContainer(
+                colors: Colors.amber,
               ),),
             ],
           ),),
           Expanded(child: Row(
             children: [
-              Expanded(child: Container(
-                margin: EdgeInsets.all(15.0),
-                decoration: BoxDecoration(
-                  color: Colors.blueAccent.shade200,
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
+              Expanded(child: RepeatContainer(
+                colors: Colors.green,
               ),),
             ],
           ),),
           Expanded(child: Row(
             children: [
-              Expanded(child: Container(
-                margin: EdgeInsets.all(15.0),
-                decoration: BoxDecoration(
-                  color: Colors.blueAccent.shade200,
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
+              Expanded(child: RepeatContainer(
+                colors: Colors.blueAccent,
               ),),
-              Expanded(child: Container(
-                margin: EdgeInsets.all(15.0),
-                decoration: BoxDecoration(
-                  color: Colors.blueAccent.shade200,
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
+              Expanded(child: RepeatContainer(
+                colors: Colors.purple,
               ),),
             ],
           ),),
 
       ],
     ),
+    );
+  }
+}
+
+class RepeatContainer extends StatelessWidget {
+  RepeatContainer({required this.colors});
+  final Color colors;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(15.0),
+      decoration: BoxDecoration(
+        color: colors,
+        borderRadius: BorderRadius.circular(10.0),
+      ),
     );
   }
 }
