@@ -13,7 +13,7 @@ class _InputState extends State<Input> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("BMI Calculator"),
+        title: Text("BMI"),
       ),
     );
   }
