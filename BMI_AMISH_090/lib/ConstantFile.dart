@@ -5,3 +5,7 @@ const LabelStyle=TextStyle(
 fontSize: 18.0,
 color: Colors.white
 );
+const NumberStyle=TextStyle(
+  fontSize: 50.0,
+  fontWeight: FontWeight.w900,
+);
