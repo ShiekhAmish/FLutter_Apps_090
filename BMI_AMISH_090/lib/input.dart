@@ -47,36 +47,38 @@ class _InputState extends State<Input> {
         children: [
           Expanded(child: Row(
             children:  [
-              Expanded(child: GestureDetector(
-                onTap: ()
-                {
-                  setState(() {
-                    SelectGender= Gender.male;
-                  });
-                },
+              Expanded(
+
                 child: RepeatContainer(
+                  onPressed: ()
+                  {
+                    setState(() {
+                      SelectGender=Gender.male;
+                    });
+                  },
+
                   colors: SelectGender==Gender.male?activeColor:deActiveColor,
                   cardWidget: RepeatIcon(
                     icon: FontAwesomeIcons.male,
                     label: 'MALE',
                   ),
                 ),
-              ),),
-              Expanded(child: GestureDetector(
-                onTap: ()
-                {
-                  setState(() {
-                    SelectGender= Gender.female;
-                  });
-                },
+              ),
+              Expanded(
                 child: RepeatContainer(
+                  onPressed: ()
+                  {
+                    setState(() {
+                      SelectGender=Gender.female;
+                    });
+                  },
                   colors: SelectGender==Gender.female?activeColor:deActiveColor,
                   cardWidget: RepeatIcon(
                     icon: FontAwesomeIcons.female,
                     label: 'FEMALE',
                   ),
                 ),
-              ),),
+              ),
             ],
           ),),
           Expanded(child: Row(
