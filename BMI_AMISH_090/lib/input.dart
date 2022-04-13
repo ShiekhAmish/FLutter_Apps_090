@@ -19,6 +19,7 @@ class Input extends StatefulWidget {
 class _InputState extends State<Input> {
    Gender SelectGender = Gender.values.first;
     int SliderHeight =180;
+    int SliderWeight= 60;
 //   Color MaleColor = deActiveColor;
 //   Color FeMaleColor = deActiveColor;
 //   void updateColor(Gender gendertype)
@@ -125,7 +126,18 @@ class _InputState extends State<Input> {
             children: [
               Expanded(child: RepeatContainer(
                 colors: Colors.blueAccent,
-                cardWidget: Container(),
+                cardWidget: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('WEIGHT',
+                    style: LabelStyle,),
+                    Text(
+                     SliderWeight.toString(),
+                     style: NumberStyle,
+                    ),
+
+                  ],
+                ),
               ),),
               Expanded(child: RepeatContainer(
                 colors: Colors.purple,
