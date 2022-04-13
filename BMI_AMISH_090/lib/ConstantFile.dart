@@ -14,3 +14,23 @@ const LargeButton=TextStyle(
   fontWeight: FontWeight.bold,
 
 );
+
+const TitleStyle = TextStyle(
+  fontSize: 50.0,
+  fontWeight: FontWeight.bold,
+);
+
+const ResultStyle = TextStyle(
+  color: Color(0xFF24D876),
+  fontSize: 22.0,
+  fontWeight: FontWeight.bold,
+);
+
+const BMIStyle = TextStyle(
+  fontSize: 100.0,
+  fontWeight: FontWeight.bold,
+);
+
+const BodyStyle = TextStyle(
+  fontSize: 22.0,
+);
