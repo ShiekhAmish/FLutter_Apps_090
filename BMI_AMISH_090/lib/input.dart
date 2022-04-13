@@ -5,7 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'IconText.dart';
 import 'ContainerCode.dart';
 import 'ConstantFile.dart';
-
+import 'result.dart';
 enum Gender{
   male,
   female,
@@ -48,6 +48,7 @@ class _InputState extends State<Input> {
       ),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
+
         children: [
           Expanded(child: Row(
             children:  [
@@ -192,11 +193,25 @@ class _InputState extends State<Input> {
               ),),
             ],
           ),),
-Container(
-  color: Colors.red,
-  margin: EdgeInsets.only(top:10.0),
-  width: double.infinity,
-  height: 80.0,
+
+GestureDetector(
+  onTap: ()
+  {
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>ResultScreen()));
+  },
+
+  child:   Container(
+
+    child:const Center(
+
+         child:Text('Calculate',style: LargeButton,),
+
+    ),
+    color: Colors.red,
+    margin: EdgeInsets.only(top:10.0),
+    width: double.infinity,
+    height: 80.0,
+  ),
 ),
       ],
     ),
