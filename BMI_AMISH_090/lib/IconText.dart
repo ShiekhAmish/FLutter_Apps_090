@@ -1,5 +1,7 @@
+import 'package:bmi_amish_090/ConstantFile.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'ConstantFile.dart';
 class RepeatIcon extends StatelessWidget {
   RepeatIcon({required this.icon, required this.label});
   final IconData icon;
@@ -20,8 +22,8 @@ class RepeatIcon extends StatelessWidget {
         ),
         Text(
           label,
-          style: const TextStyle(fontSize: 18.0,
-              color: Colors.white),),
+          style: LabelStyle,
+        ),
       ],
     );
   }
