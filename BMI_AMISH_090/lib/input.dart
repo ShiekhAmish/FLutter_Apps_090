@@ -17,21 +17,23 @@ class Input extends StatefulWidget {
 }
 
 class _InputState extends State<Input> {
-  Color MaleColor = deActiveColor;
-  Color FeMaleColor = deActiveColor;
-  void updateColor(Gender gendertype)
-  {
-if(gendertype==Gender.male)
-  {
-     MaleColor = activeColor;
-    FeMaleColor = deActiveColor;
-  }
-if(gendertype==Gender.female)
-{
-  MaleColor = deActiveColor;
-  FeMaleColor = activeColor;
-}
-  }
+   Gender SelectGender = Gender.values.first;
+
+//   Color MaleColor = deActiveColor;
+//   Color FeMaleColor = deActiveColor;
+//   void updateColor(Gender gendertype)
+//   {
+// if(gendertype==Gender.male)
+//   {
+//      MaleColor = activeColor;
+//     FeMaleColor = deActiveColor;
+//   }
+// if(gendertype==Gender.female)
+// {
+//   MaleColor = deActiveColor;
+//   FeMaleColor = activeColor;
+// }
+//   }
 
   @override
   Widget build(BuildContext context) {
@@ -49,11 +51,11 @@ if(gendertype==Gender.female)
                 onTap: ()
                 {
                   setState(() {
-                    updateColor(Gender.male);
+                    SelectGender= Gender.male;
                   });
                 },
                 child: RepeatContainer(
-                  colors: MaleColor,
+                  colors: SelectGender==Gender.male?activeColor:deActiveColor,
                   cardWidget: RepeatIcon(
                     icon: FontAwesomeIcons.male,
                     label: 'MALE',
@@ -64,11 +66,11 @@ if(gendertype==Gender.female)
                 onTap: ()
                 {
                   setState(() {
-                    updateColor(Gender.female);
+                    SelectGender= Gender.female;
                   });
                 },
                 child: RepeatContainer(
-                  colors: FeMaleColor,
+                  colors: SelectGender==Gender.female?activeColor:deActiveColor,
                   cardWidget: RepeatIcon(
                     icon: FontAwesomeIcons.female,
                     label: 'FEMALE',
