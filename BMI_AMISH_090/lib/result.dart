@@ -1,10 +1,17 @@
 import 'package:bmi_amish_090/ConstantFile.dart';
 import 'package:bmi_amish_090/ContainerCode.dart';
+import 'package:bmi_amish_090/main.dart';
 import 'package:flutter/material.dart';
 import 'ConstantFile.dart';
 import 'ConstantFile.dart';
 import 'input.dart';
 class ResultScreen extends StatelessWidget {
+
+  ResultScreen({required this.Interpretation,required this.BMIResult,required this.ResultText});
+
+  final String BMIResult;
+   final String ResultText;
+   final String Interpretation;
 
 
   @override
@@ -33,17 +40,17 @@ class ResultScreen extends StatelessWidget {
               cardWidget: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
+                children: [
                   Text(
-                    'Normal',
+                    ResultText.toUpperCase(),
                     style: ResultStyle,
                   ),
                   Text(
-                    '18.3',
+                    BMIResult,
                     style: BMIStyle,
                   ),
                   Text(
-                    'BMI is Low You should have to work More',
+                    Interpretation,
                     textAlign: TextAlign.center,
                     style: BodyStyle,
                   ),
@@ -54,7 +61,7 @@ class ResultScreen extends StatelessWidget {
           Expanded(child: GestureDetector(
             onTap: ()
             {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>ResultScreen()));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>BMI()));
             },
 
             child:   Container(
