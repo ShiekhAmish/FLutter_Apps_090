@@ -5,6 +5,10 @@ import 'ContainerCode.dart';
 
 const activeColor = Color(0xFF1D1E33);
 const deActiveColor = Color(0xFF111328);
+enum Gender{
+  male,
+  female,
+}
 class Input extends StatefulWidget {
   const Input({Key? key}) : super(key: key);
 
@@ -15,14 +19,14 @@ class Input extends StatefulWidget {
 class _InputState extends State<Input> {
   Color MaleColor = deActiveColor;
   Color FeMaleColor = deActiveColor;
-  void updateColor(int gender)
+  void updateColor(Gender gendertype)
   {
-if(gender==1)
+if(gendertype==Gender.male)
   {
      MaleColor = activeColor;
     FeMaleColor = deActiveColor;
   }
-if(gender==2)
+if(gendertype==Gender.female)
 {
   MaleColor = deActiveColor;
   FeMaleColor = activeColor;
@@ -45,7 +49,7 @@ if(gender==2)
                 onTap: ()
                 {
                   setState(() {
-                    updateColor(1);
+                    updateColor(Gender.male);
                   });
                 },
                 child: RepeatContainer(
@@ -60,7 +64,7 @@ if(gender==2)
                 onTap: ()
                 {
                   setState(() {
-                    updateColor(2);
+                    updateColor(Gender.female);
                   });
                 },
                 child: RepeatContainer(
