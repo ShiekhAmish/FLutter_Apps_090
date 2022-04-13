@@ -1,4 +1,5 @@
 import 'package:bmi_amish_090/ConstantFile.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'IconText.dart';
@@ -20,6 +21,7 @@ class _InputState extends State<Input> {
    Gender SelectGender = Gender.values.first;
     int SliderHeight =180;
     int SliderWeight= 60;
+    int SliderAge = 20;
 //   Color MaleColor = deActiveColor;
 //   Color FeMaleColor = deActiveColor;
 //   void updateColor(Gender gendertype)
@@ -129,25 +131,100 @@ class _InputState extends State<Input> {
                 cardWidget: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('WEIGHT',
+                    const Text('WEIGHT',
                     style: LabelStyle,),
                     Text(
                      SliderWeight.toString(),
                      style: NumberStyle,
                     ),
-
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        RoundIcon(iconData: FontAwesomeIcons.minus, onPress: (){
+                          setState(() {
+                            SliderWeight--;
+                          });
+                        },),
+                        const SizedBox(
+                          width: 10.0,
+                        ),
+                        RoundIcon(iconData: FontAwesomeIcons.plus, onPress: (){
+                          setState(() {
+                            SliderWeight++;
+                          });
+                        },),
+                      ],
+                    ),
                   ],
                 ),
               ),),
               Expanded(child: RepeatContainer(
                 colors: Colors.purple,
-                cardWidget: Container(),
+                cardWidget: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('AGE',
+                      style: LabelStyle,),
+                    Text(
+                      SliderAge.toString(),
+                      style: NumberStyle,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        RoundIcon(iconData: FontAwesomeIcons.minus, onPress: (){
+                          setState(() {
+                            SliderAge--;
+                          });
+                        },),
+                        const SizedBox(
+                          width: 10.0,
+                        ),
+                        RoundIcon(iconData: FontAwesomeIcons.plus, onPress: (){
+                          setState(() {
+                            SliderAge++;
+                          });
+                        },),
+                      ],
+                    ),
+                  ],
+                ),
               ),),
             ],
           ),),
-
+Container(
+  color: Colors.red,
+  margin: EdgeInsets.only(top:10.0),
+  width: double.infinity,
+  height: 80.0,
+),
       ],
     ),
+    );
+  }
+}
+class RoundIcon extends StatelessWidget {
+
+   RoundIcon({ required this.iconData, required this.onPress});
+
+  final IconData iconData;
+  final Function onPress;
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton( child: Icon(iconData),
+      onPressed: () => {
+        onPress(),
+      },
+     elevation: 6.0,
+
+      constraints: BoxConstraints.tightFor(
+        height: 56.0,
+        width: 56.0,
+
+      ),
+      shape:   CircleBorder(),
+      fillColor: Color(0xFF4C4F5E),
     );
   }
 }
