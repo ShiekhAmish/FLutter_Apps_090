@@ -19,6 +19,18 @@ class _ClimateState extends State<Climate> {
           IconButton(onPressed: () => print("Clicked"), icon: Icon(Icons.menu),),
         ],
       ),
+      body: Stack(
+        children: const [
+          Center(
+            child: Expanded(
+              child: Image(
+              image: AssetImage('images/img1.webp'),
+              width: 500,
+              fit: BoxFit.fill,
+            ),),
+          ),
+        ],
+      ),
     );
   }
 }
