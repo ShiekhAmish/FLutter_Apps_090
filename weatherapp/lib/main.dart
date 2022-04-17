@@ -3,8 +3,9 @@ import 'UI/climate.dart';
 void main() {
   runApp( MaterialApp(
     title: 'Climate',
+    debugShowCheckedModeBanner: false,
     home: Climate(
-      
+
     ),
     // initialRoute: '/',
     // routes: {
