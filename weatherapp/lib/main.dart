@@ -5,11 +5,13 @@ import 'screen2.dart';
 void main() {
   runApp( MaterialApp(
     title: 'Climate',
-    initialRoute: '/',
-    routes: {
-      '/': (context) => Screen0(),
-      '/first': (context) => Screen1(),
-      '/second': (context) => Screen2(),
-    },
+    home: Screen1(),
+
+    // initialRoute: '/',
+    // routes: {
+    //   '/': (context) => Screen0(),
+    //   '/first': (context) => Screen1(),
+    //   '/second': (context) => Screen2(),
+    // },
   ));
 }
