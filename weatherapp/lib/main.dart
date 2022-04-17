@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:weatherapp/screen1.dart';
-import 'screen0.dart';
-import 'screen2.dart';
+import 'UI/climate.dart';
 void main() {
   runApp( MaterialApp(
     title: 'Climate',
-    home: Screen1(),
-
+    home: Climate(
+      
+    ),
     // initialRoute: '/',
     // routes: {
     //   '/': (context) => Screen0(),
