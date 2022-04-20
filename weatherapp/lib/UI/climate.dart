@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../utils/apifile.dart' as util;
 class Climate extends StatefulWidget {
 
   @override
@@ -41,6 +42,12 @@ class _ClimateState extends State<Climate> {
       ),
     );
   }
+  Future<Map> getWeather(String appId, String city)async
+  {
+    String apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=$city&appid=${util.apiId}&units=imperial';
+    
+  }
+
 }
 TextStyle cityStyle() {
   return TextStyle(
@@ -48,4 +55,12 @@ TextStyle cityStyle() {
     fontSize: 22.9,
     fontStyle: FontStyle.italic,
   );
+}
+
+TextStyle tempStyle() {
+  return TextStyle(
+      color: Colors.white,
+      fontStyle: FontStyle.normal,
+      fontWeight: FontWeight.w500,
+      fontSize: 49.9);
 }
