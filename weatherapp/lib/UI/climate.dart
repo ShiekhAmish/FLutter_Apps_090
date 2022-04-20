@@ -44,6 +44,16 @@ class _ClimateState extends State<Climate> {
               style: cityStyle(),
             ),
           ),
+          Center(
+            child: Image(
+              image: AssetImage('images/cloud3.png'),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.fromLTRB(30.0, 70.0, 0.0, 0.0),
+            child: updateTempWidget(
+                'Lahore'),
+          ),
         ],
       ),
     );
@@ -55,7 +65,44 @@ class _ClimateState extends State<Climate> {
 
     return json.decode(response.body);
   }
-
+  Widget updateTempWidget(String city) {
+    return FutureBuilder(
+        future: getWeather(util.apiId, city == null ? util.defaultCity : city),
+        builder: (BuildContext context, AsyncSnapshot<Map> snapshot) {
+          //where we get all of the json data, we setup widgets etc.
+          if (snapshot.hasData) {
+            Map? content = snapshot.data;
+            return Container(
+              margin: const EdgeInsets.fromLTRB(30.0, 250.0, 0.0, 0.0),
+              child: new Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new ListTile(
+                    title: new Text(
+                      content!['main']['temp'].toString() + " F",
+                      style: new TextStyle(
+                          fontStyle: FontStyle.normal,
+                          fontSize: 49.9,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    subtitle: new ListTile(
+                      title: new Text(
+                        "Humidity: ${content['main']['humidity'].toString()}\n"
+                            "Min: ${content['main']['temp_min'].toString()} F\n"
+                            "Max: ${content['main']['temp_max'].toString()} F ",
+                        style: extraData(),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            );
+          } else {
+            return Container();
+          }
+        });
+  }
 }
 TextStyle cityStyle() {
   return TextStyle(
@@ -71,4 +118,8 @@ TextStyle tempStyle() {
       fontStyle: FontStyle.normal,
       fontWeight: FontWeight.w500,
       fontSize: 49.9);
+}
+TextStyle extraData() {
+  return TextStyle(
+      color: Colors.white70, fontStyle: FontStyle.normal, fontSize: 17.0);
 }
