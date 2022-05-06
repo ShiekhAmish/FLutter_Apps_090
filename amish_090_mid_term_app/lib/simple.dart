@@ -15,32 +15,25 @@ class _SimpleState extends State<Simple> {
   bool _isWithSpecial = false;
   double _numberCharPassword = 4;
   String newPassword = '';
+  String newPassword1 = '';
+  String newPassword2 = '';
   Color _color = Colors.blue;
   String isOk = '';
   final TextEditingController _passwordLength = TextEditingController();
-  final TextEditingController _passwordChars = TextEditingController();
-  final TextEditingController _passwordDigits = TextEditingController();
-  final TextEditingController _passwordSymbols = TextEditingController();
+double _passwordChars=4;
+  double _passwordDigits=4;
   final password = RandomPasswordGenerator();
-  static const MaxNumericDigits = 17;
+  static const MaxNumericDigits = 8;
   static final _random = Random();
 
   static String getString(int digitCount) {
-
+    final letterUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     String s = "";
     for (var i = 0; i < digitCount; i++) {
       s += _random.nextInt(10).toString();
     }
     return s;
   }
-  String s= getString(4);
-  String con =  '';
-  @override
-  void initState() {
-    super.initState();
-  }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +41,7 @@ class _SimpleState extends State<Simple> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Strong Password Generator'),
+          title: const Text('Simple Password Generator'),
         ),
         body: Center(
             child: Column(
@@ -84,17 +77,21 @@ class _SimpleState extends State<Simple> {
                 ),
                 FlatButton(
                     onPressed: () {
-                      if (_passwordLength.text.trim().isNotEmpty) {
-                        _numberCharPassword =
-                            double.parse(_passwordLength.text.trim());
-                      }
 
-                      newPassword = password.randomPassword(
-                          letters: _isWithLetters,
-                          numbers: _isWithNumbers,
-                          passwordLength: _numberCharPassword,
-                          specialChar: _isWithSpecial,
-                          uppercase: _isWithUppercase);
+
+                      newPassword1 = password.randomPassword(
+                          letters: _isWithLetters=true,
+                          numbers: _isWithNumbers=false,
+                          passwordLength: _passwordChars,
+                          specialChar: _isWithSpecial=false,
+                          uppercase: _isWithUppercase=true);
+                      newPassword2 = password.randomPassword(
+                          letters: _isWithLetters=false,
+                          numbers: _isWithNumbers=true,
+                          passwordLength:_passwordDigits,
+                          specialChar: _isWithSpecial=false,
+                          uppercase: _isWithUppercase=false);
+                      newPassword = newPassword1+ newPassword2;
 
                       print(newPassword);
                       double passwordStrength =
@@ -109,6 +106,25 @@ class _SimpleState extends State<Simple> {
                         padding: EdgeInsets.all(8.0),
                         child: Text(
                           'Generator Password',
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                      ),
+                    )),
+                const SizedBox(
+                  height: 10,
+                ),
+                FlatButton(
+                    onPressed: () {
+
+
+                      setState(() {});
+                    },
+                    child: Container(
+                      color: Colors.red,
+                      child: const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text(
+                          'Save',
                           style: TextStyle(color: Colors.white, fontSize: 20),
                         ),
                       ),
@@ -133,11 +149,11 @@ class _SimpleState extends State<Simple> {
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            s+newPassword,
+                            newPassword,
                             style: TextStyle(color: _color, fontSize: 25),
                           ),
                         ),
-                      ))
+                      )),
               ],
             )),
       ),

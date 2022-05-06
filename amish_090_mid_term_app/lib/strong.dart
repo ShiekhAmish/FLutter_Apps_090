@@ -15,12 +15,18 @@ class _StrongState extends State<Strong> {
   bool _isWithSpecial = false;
   double _numberCharPassword = 8;
   String newPassword = '';
+  String newPassword1 = '';
+  String newPassword2 = '';
+  String newPassword3 = '';
   Color _color = Colors.blue;
   String isOk = '';
   final TextEditingController _passwordLength = TextEditingController();
-  final TextEditingController _passwordChars = TextEditingController();
-  final TextEditingController _passwordDigits = TextEditingController();
-  final TextEditingController _passwordSymbols = TextEditingController();
+  final TextEditingController _passwordLengthChar = TextEditingController();
+  final TextEditingController _passwordLengthDigit = TextEditingController();
+  final TextEditingController _passwordLengthSymbol = TextEditingController();
+  double _passwordChars = 4;
+  double _passwordDigits = 4;
+  double _passwordSymbols = 4;
   final password = RandomPasswordGenerator();
   @override
   void initState() {
@@ -49,7 +55,7 @@ class _StrongState extends State<Strong> {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 10,
+                  height: 5,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -65,7 +71,7 @@ class _StrongState extends State<Strong> {
                   ],
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 5,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -81,10 +87,27 @@ class _StrongState extends State<Strong> {
                   ],
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 5,
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(10.0),
+                  child: TextField(
+                    
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                        borderSide: const BorderSide(),
+                      ),
+                      filled: true,
+                      fillColor: Colors.grey[300],
+                      labelText: 'Enter Your Password',
+                      labelStyle: const TextStyle(color: Colors.blue),
+                    ),
+                    keyboardType: TextInputType.text,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
                   child: TextField(
                     controller: _passwordLength,
                     decoration: InputDecoration(
@@ -101,9 +124,9 @@ class _StrongState extends State<Strong> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: TextField(
-                    controller: _passwordChars,
+                    controller: _passwordLengthChar,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25.0),
@@ -115,12 +138,14 @@ class _StrongState extends State<Strong> {
                       labelStyle: const TextStyle(color: Colors.blue),
                     ),
                     keyboardType: TextInputType.number,
+
                   ),
                 ),
+
                 Padding(
-                  padding: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: TextField(
-                    controller: _passwordDigits,
+                    controller: _passwordLengthDigit,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25.0),
@@ -135,9 +160,9 @@ class _StrongState extends State<Strong> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: TextField(
-                    controller: _passwordSymbols,
+                    controller: _passwordLengthSymbol,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25.0),
@@ -153,7 +178,7 @@ class _StrongState extends State<Strong> {
                 ),
 
                 const SizedBox(
-                  height: 20,
+                  height: 5,
                 ),
                 FlatButton(
                     onPressed: () {
@@ -191,7 +216,94 @@ class _StrongState extends State<Strong> {
                         padding: EdgeInsets.all(8.0),
                         child: Text(
                           'Generator Password',
-                          style: TextStyle(color: Colors.white, fontSize: 20),
+                          style: TextStyle(color: Colors.white, fontSize: 15),
+                        ),
+                      ),
+                    )),
+
+                const SizedBox(
+                  height: 5,
+                ),
+                FlatButton(
+                    onPressed: () {
+
+                        _passwordChars =
+                            double.parse(_passwordLengthChar.text.trim());
+                        _passwordDigits =
+                            double.parse(_passwordLengthDigit.text.trim());
+                        _passwordSymbols =
+                            double.parse(_passwordLengthSymbol.text.trim());
+
+
+                      newPassword1 = password.randomPassword(
+                          letters: _isWithLetters=true,
+
+                          passwordLength: _passwordChars,
+                          uppercase: _isWithUppercase=true,
+                      );
+                      newPassword2 = password.randomPassword(
+
+                        letters: _isWithLetters=false,
+                        numbers: _isWithNumbers=true,
+                        passwordLength: _passwordDigits,
+                        specialChar: _isWithSpecial=false,
+                        uppercase: _isWithUppercase=false
+
+                      );
+                      newPassword3 = password.randomPassword(
+
+                          letters: _isWithLetters=false,
+                          numbers: _isWithNumbers=false,
+                          passwordLength: _passwordSymbols,
+                          specialChar: _isWithSpecial=true,
+                          uppercase: _isWithUppercase=false,
+                      );
+
+                      newPassword = newPassword1+newPassword2+newPassword3;
+
+
+                      print(newPassword);
+                      double passwordStrength =
+                      password.checkPassword(password: newPassword);
+                      if (passwordStrength < 0.3) {
+                        _color = Colors.red;
+                        isOk = 'Hint: But this password is weak...! ';
+                      } else if (passwordStrength < 0.7) {
+                        _color = Colors.blue;
+                        isOk = 'This password is Good, Hint:';
+                      } else {
+                        _color = Colors.green;
+                        isOk = 'Hint: Strong Password';
+                      }
+
+                      setState(() {});
+                    },
+                    child: Container(
+                      color: Colors.red,
+                      child: const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text(
+                          'Generator Customize Password',
+                          style: TextStyle(color: Colors.white, fontSize: 15),
+                        ),
+                      ),
+                    )),
+                const SizedBox(
+                  height: 5,
+                ),
+                FlatButton(
+                    onPressed: () {
+
+
+                      setState(() {});
+                    },
+                    child: Container(
+                      color: Colors.red,
+                      child: const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text(
+                          'Save',
+                          style: TextStyle(color: Colors.white, fontSize: 15),
                         ),
                       ),
                     )),
@@ -205,7 +317,7 @@ class _StrongState extends State<Strong> {
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
                             isOk,
-                            style: TextStyle(color: _color, fontSize: 25),
+                            style: TextStyle(color: _color, fontSize: 15),
                           ),
                         ),
                       )),
@@ -216,7 +328,7 @@ class _StrongState extends State<Strong> {
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
                             newPassword,
-                            style: TextStyle(color: _color, fontSize: 25),
+                            style: TextStyle(color: _color, fontSize: 15),
                           ),
                         ),
                       ))
