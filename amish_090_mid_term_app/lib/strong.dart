@@ -32,7 +32,7 @@ class _StrongState extends State<Strong> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(name),
-        Checkbox(value: value, onChanged: onTap(true)),
+        Checkbox(value: value, onChanged: onTap),
       ],
     );
   }
