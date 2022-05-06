@@ -56,66 +56,104 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-          SizedBox(height: 20,),
-        Row(
+          SizedBox(height: 50,),
+       Row(
 
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Card(
-              child: Container(
-                height: 200,
-                width: 200,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
+            GestureDetector(
+              onTap: null,
+              child: Card(
 
-                    image: AssetImage("img/simple.png"),
+                child: Container(
+                  height: 150,
+                  width: 150,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.0),
 
-                    alignment: Alignment.topCenter,
+                      image: DecorationImage(
+                          image: AssetImage('img/simple.png'))),
+
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text('Simple Password', style: TextStyle(fontWeight: FontWeight.bold ),),
+                    ],
                   ),
-
                 ),
-                child: Text("Simple Password"),
+
               ),
-
             ),
           ],
         ),
-        SizedBox(height: 120,),
-        Column(
-          children: [
-          Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-                child: TextButton(
-                  child: Image.asset("img/strong.png"),
-                  onPressed: null,
-
-                )
+        SizedBox(height: 10,),
 
 
+            Row(
+
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  onTap: null,
+                   child: Card(
+                      child: Container(
+                        height: 150,
+                        width: 150,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15.0),
+                            image: DecorationImage(
+                                image: AssetImage('img/strong.png'))),
+
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text('Strong Password', style: TextStyle(fontWeight: FontWeight.bold ),),
+                          ],
+                        ),
+                      ),
+
+                    )
+                ),
+              ],
             ),
+            Row(
 
-          ],
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  onTap: null,
+                  child: Card(
+                    child: Container(
+                      height: 150,
+                      width: 150,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15.0),
+                          image: DecorationImage(
+                              image: AssetImage('img/view.png'))),
 
-        ),
-        Row(
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text('View', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                        ],
+                      ),
+                    ),
 
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-                child: TextButton(
-                  child: Image.asset("img/view.png"),
-                  onPressed: null,
-                )
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
         ],
         ),
-      ],
+
       ),
-      ),// This trailing comma makes auto-formatting nicer for build methods.
+      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
