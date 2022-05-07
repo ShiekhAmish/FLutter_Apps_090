@@ -6,7 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:amish_090_mid_term_app/View  Screens/Update.dart';
 import 'package:amish_090_mid_term_app/strong.dart';
 import 'package:amish_090_mid_term_app/View  Screens/View.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 

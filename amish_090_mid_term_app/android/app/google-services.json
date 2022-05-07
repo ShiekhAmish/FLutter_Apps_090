@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "585397269679",
+    "project_id": "midterm-pass-app",
+    "storage_bucket": "midterm-pass-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:585397269679:android:9551c53b589ebbd258d05a",
+        "android_client_info": {
+          "package_name": "com.example.amish_090_mid_term_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "585397269679-4kloegorivkrredbssqaq0tjclebfs8v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.amish_090_mid_term_app",
+            "certificate_hash": "84ff7d2b39bf8ad6098e8a4fd8ab51f3eec303b9"
+          }
+        },
+        {
+          "client_id": "585397269679-9fsjqjg6fepe83leacpu04dpo7vbcnn0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxQIuDJzmerfcDKH9qvJokgqKSg_T_RMM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "585397269679-9fsjqjg6fepe83leacpu04dpo7vbcnn0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

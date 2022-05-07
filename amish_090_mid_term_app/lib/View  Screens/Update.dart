@@ -1,17 +1,31 @@
 import 'package:amish_090_mid_term_app/View  Screens/PasswordsList.dart';
 import 'package:flutter/material.dart';
 import 'package:amish_090_mid_term_app/View  Screens/Update.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 class Update extends StatefulWidget {
+  final String id;
+  Update({Key key, this.id}) : super(key: key);
 
-  final _formKey = GlobalKey<FormState>();
 
   // Updaing Student
+
 
   @override
   _UpdateState createState() => _UpdateState();
 }
-
+final _formKey = GlobalKey<FormState>();
 class _UpdateState extends State<Update> {
+  CollectionReference students =
+  FirebaseFirestore.instance.collection('students');
+
+  Future<void> updateUser(id, name, pass) {
+    return students
+        .doc(id)
+        .update({'name': name, 'pass': pass})
+        .then((value) => print("User Updated"))
+        .catchError((error) => print("Failed to update user: $error"));
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,10 +35,23 @@ class _UpdateState extends State<Update> {
       body: Form(
           key: _formKey,
           // Getting Specific Data by ID
-          
-              var data = snapshot.data!.data();
-              var name = data!['name'];
-              var email = data['email'];
+          child: FutureBuilder<DocumentSnapshot<Map<String, dynamic>>>(
+            future: FirebaseFirestore.instance
+                .collection('students')
+                .doc(widget.id)
+                .get(),
+            builder: (_, snapshot) {
+              if (snapshot.hasError) {
+                print('Something Went Wrong');
+              }
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              var data = snapshot.data.data();
+              var name = data['name'];
+
               var password = data['password'];
               return Padding(
                 padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
@@ -81,8 +108,8 @@ class _UpdateState extends State<Update> {
                           ElevatedButton(
                             onPressed: () {
                               // Validate returns true if the form is valid, otherwise false.
-                              if (_formKey.currentState!.validate()) {
-                                updateUser(widget.id, name, email, password);
+                              if (_formKey.currentState.validate()) {
+                                updateUser(widget.id, name, password);
                                 Navigator.pop(context);
                               }
                             },
