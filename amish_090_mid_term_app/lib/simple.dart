@@ -54,6 +54,23 @@ double _passwordChars=4;
                   height: 20,
                 ),
                 Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: TextField(
+
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                        borderSide: const BorderSide(),
+                      ),
+                      filled: true,
+                      fillColor: Colors.grey[300],
+                      labelText: 'Enter Your Name',
+                      labelStyle: const TextStyle(color: Colors.blue),
+                    ),
+                    keyboardType: TextInputType.text,
+                  ),
+                ),
+                Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: TextField(
 

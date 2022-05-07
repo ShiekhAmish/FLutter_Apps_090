@@ -55,7 +55,7 @@ class _StrongState extends State<Strong> {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 5,
+                  height: 3,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -71,7 +71,7 @@ class _StrongState extends State<Strong> {
                   ],
                 ),
                 const SizedBox(
-                  height: 5,
+                  height: 2,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -87,12 +87,29 @@ class _StrongState extends State<Strong> {
                   ],
                 ),
                 const SizedBox(
-                  height: 5,
+                  height: 3,
                 ),
                 Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: TextField(
-                    
+
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                        borderSide: const BorderSide(),
+                      ),
+                      filled: true,
+                      fillColor: Colors.grey[300],
+                      labelText: 'Enter Your Name',
+                      labelStyle: const TextStyle(color: Colors.blue),
+                    ),
+                    keyboardType: TextInputType.text,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: TextField(
+
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25.0),
@@ -178,7 +195,7 @@ class _StrongState extends State<Strong> {
                 ),
 
                 const SizedBox(
-                  height: 5,
+                  height: 3,
                 ),
                 FlatButton(
                     onPressed: () {
@@ -222,7 +239,7 @@ class _StrongState extends State<Strong> {
                     )),
 
                 const SizedBox(
-                  height: 5,
+                  height: 3,
                 ),
                 FlatButton(
                     onPressed: () {
@@ -284,12 +301,12 @@ class _StrongState extends State<Strong> {
                         padding: EdgeInsets.all(8.0),
                         child: Text(
                           'Generator Customize Password',
-                          style: TextStyle(color: Colors.white, fontSize: 15),
+                          style: TextStyle(color: Colors.white, fontSize: 13),
                         ),
                       ),
                     )),
                 const SizedBox(
-                  height: 5,
+                  height: 3,
                 ),
                 FlatButton(
                     onPressed: () {
@@ -303,21 +320,21 @@ class _StrongState extends State<Strong> {
                         padding: EdgeInsets.all(8.0),
                         child: Text(
                           'Save',
-                          style: TextStyle(color: Colors.white, fontSize: 15),
+                          style: TextStyle(color: Colors.white, fontSize: 13),
                         ),
                       ),
                     )),
                 const SizedBox(
-                  height: 10,
+                  height: 3,
                 ),
                 if (newPassword.isNotEmpty)
                   Center(
                       child: SingleChildScrollView(
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(4.0),
                           child: Text(
                             isOk,
-                            style: TextStyle(color: _color, fontSize: 15),
+                            style: TextStyle(color: _color, fontSize: 14),
                           ),
                         ),
                       )),
@@ -325,10 +342,10 @@ class _StrongState extends State<Strong> {
                   Center(
                       child: SingleChildScrollView(
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(2.0),
                           child: Text(
                             newPassword,
-                            style: TextStyle(color: _color, fontSize: 15),
+                            style: TextStyle(color: _color, fontSize: 13),
                           ),
                         ),
                       ))

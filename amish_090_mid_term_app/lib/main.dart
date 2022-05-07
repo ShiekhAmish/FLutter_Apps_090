@@ -1,7 +1,9 @@
+import 'package:amish_090_mid_term_app/View%20%20Screens/View.dart';
 import 'package:amish_090_mid_term_app/simple.dart';
 import 'package:amish_090_mid_term_app/strong.dart';
 import 'package:flutter/material.dart';
 import 'package:amish_090_mid_term_app/strong.dart';
+import 'package:amish_090_mid_term_app/View  Screens/View.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -138,7 +140,12 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 GestureDetector(
-                  onTap: null,
+                  onTap: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ViewPage()),
+                    );
+                  },
                   child: Card(
                     child: Container(
                       height: 150,
