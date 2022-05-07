@@ -254,7 +254,10 @@ class _StrongState extends State<Strong> {
                               passwordLength: _numberCharPassword,
                               specialChar: _isWithSpecial,
                               uppercase: _isWithUppercase);
-
+                          List<String> result = newPassword.split('');
+                          result.shuffle();
+                          var stringList = result.join("");
+                          newPassword=stringList;
                           print(newPassword);
                           double passwordStrength =
                           password.checkPassword(password: newPassword);
@@ -321,7 +324,10 @@ class _StrongState extends State<Strong> {
                           );
 
                           newPassword = newPassword1+newPassword2+newPassword3;
-
+                          List<String> result = newPassword.split('');
+                          result.shuffle();
+                          var stringList = result.join("");
+                          newPassword=stringList;
 
                           print(newPassword);
                           double passwordStrength =
