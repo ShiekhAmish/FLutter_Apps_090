@@ -1,4 +1,6 @@
+import 'package:amish_090_mid_term_app/View  Screens/PasswordsList.dart';
 import 'package:flutter/material.dart';
+import 'package:amish_090_mid_term_app/View  Screens/Update.dart';
 import 'package:random_password_generator/random_password_generator.dart';
 
 class Strong extends StatefulWidget {

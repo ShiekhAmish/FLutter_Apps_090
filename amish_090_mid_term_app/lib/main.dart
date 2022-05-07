@@ -1,7 +1,9 @@
 import 'package:amish_090_mid_term_app/View%20%20Screens/View.dart';
 import 'package:amish_090_mid_term_app/simple.dart';
 import 'package:amish_090_mid_term_app/strong.dart';
+import 'package:amish_090_mid_term_app/View  Screens/PasswordsList.dart';
 import 'package:flutter/material.dart';
+import 'package:amish_090_mid_term_app/View  Screens/Update.dart';
 import 'package:amish_090_mid_term_app/strong.dart';
 import 'package:amish_090_mid_term_app/View  Screens/View.dart';
 void main() {

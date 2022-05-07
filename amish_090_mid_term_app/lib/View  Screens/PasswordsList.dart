@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:amish_090_mid_term_app/View  Screens/Update.dart';
 class PasswordsList extends StatefulWidget {
   const PasswordsList({Key key}) : super(key: key);
 
@@ -6,7 +7,21 @@ class PasswordsList extends StatefulWidget {
   _PasswordsListState createState() => _PasswordsListState();
 }
 
+class _PasswordsListState extends State<PasswordsList> {
+  final Stream<QuerySnapshot> studentsStream =
+  FirebaseFirestore.instance.collection('students').snapshots();
 
+  // For Deleting User
+  CollectionReference students =
+  FirebaseFirestore.instance.collection('students');
+  Future<void> deleteUser(id) {
+    // print("User Deleted $id");
+    return students
+        .doc(id)
+        .delete()
+        .then((value) => print('User Deleted'))
+        .catchError((error) => print('Failed to Delete user: $error'));
+  }
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -1,4 +1,6 @@
+import 'package:amish_090_mid_term_app/View  Screens/PasswordsList.dart';
 import 'package:flutter/material.dart';
+import 'package:amish_090_mid_term_app/View  Screens/Update.dart';
 import 'package:random_password_generator/random_password_generator.dart';
 import 'dart:math';
 class Simple extends StatefulWidget {
@@ -34,7 +36,39 @@ double _passwordChars=4;
     }
     return s;
   }
+  final _formKey = GlobalKey<FormState>();
 
+  var name = "";
+  var pass = "";
+
+  // Create a text controller and use it to retrieve the current value
+  // of the TextField.
+  final nameController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    nameController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  clearText() {
+    nameController.clear();
+    passwordController.clear();
+  }
+
+  // Adding Student
+  // CollectionReference students =
+  // FirebaseFirestore.instance.collection('students');
+
+  Future<void> addUser() {
+    return students
+        .add({'name': name, 'pass': pass})
+        .then((value) => print('User Added'))
+        .catchError((error) => print('Failed to Add user: $error'));
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -43,136 +77,147 @@ double _passwordChars=4;
         appBar: AppBar(
           title: const Text('Simple Password Generator'),
         ),
-        body: Center(
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 10,
-                ),
-
-                const SizedBox(
-                  height: 20,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: TextField(
-
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                        borderSide: const BorderSide(),
-                      ),
-                      filled: true,
-                      fillColor: Colors.grey[300],
-                      labelText: 'Enter Your Name',
-                      labelStyle: const TextStyle(color: Colors.blue),
-                    ),
-                    keyboardType: TextInputType.text,
+        body: Form(
+          key: _formKey,
+          child: Center(
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 10,
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: TextField(
 
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                        borderSide: const BorderSide(),
-                      ),
-                      filled: true,
-                      fillColor: Colors.grey[300],
-                      labelText: 'Enter Your Password',
-                      labelStyle: const TextStyle(color: Colors.blue),
-                    ),
-                    keyboardType: TextInputType.number,
+                  const SizedBox(
+                    height: 20,
                   ),
-                ),
-
-
-                const SizedBox(
-                  height: 20,
-                ),
-                FlatButton(
-                    onPressed: () {
-
-
-                      newPassword1 = password.randomPassword(
-                          letters: _isWithLetters=true,
-                          numbers: _isWithNumbers=false,
-                          passwordLength: _passwordChars,
-                          specialChar: _isWithSpecial=false,
-                          uppercase: _isWithUppercase=true);
-                      newPassword2 = password.randomPassword(
-                          letters: _isWithLetters=false,
-                          numbers: _isWithNumbers=true,
-                          passwordLength:_passwordDigits,
-                          specialChar: _isWithSpecial=false,
-                          uppercase: _isWithUppercase=false);
-                      newPassword = newPassword1+ newPassword2;
-
-                      print(newPassword);
-                      double passwordStrength =
-                      password.checkPassword(password: newPassword);
-
-
-                      setState(() {});
-                    },
-                    child: Container(
-                      color: Colors.red,
-                      child: const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          'Generator Password',
-                          style: TextStyle(color: Colors.white, fontSize: 20),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: TextField(
+                      controller: nameController,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(25.0),
+                          borderSide: const BorderSide(),
                         ),
+                        filled: true,
+                        fillColor: Colors.grey[300],
+                        labelText: 'Enter Your Name',
+                        labelStyle: const TextStyle(color: Colors.blue),
                       ),
-                    )),
-                const SizedBox(
-                  height: 10,
-                ),
-                FlatButton(
-                    onPressed: () {
-
-
-                      setState(() {});
-                    },
-                    child: Container(
-                      color: Colors.red,
-                      child: const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          'Save',
-                          style: TextStyle(color: Colors.white, fontSize: 20),
+                      keyboardType: TextInputType.text,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: TextField(
+                      controller: passwordController,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(25.0),
+                          borderSide: const BorderSide(),
                         ),
+                        filled: true,
+                        fillColor: Colors.grey[300],
+                        labelText: 'Enter Your Password',
+                        labelStyle: const TextStyle(color: Colors.blue),
                       ),
-                    )),
-                const SizedBox(
-                  height: 10,
-                ),
-                if (newPassword.isNotEmpty)
-                  Center(
-                      child: SingleChildScrollView(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                      keyboardType: TextInputType.number,
+                    ),
+                  ),
+
+
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  FlatButton(
+                      onPressed: () {
+                        if (_formKey.currentState.validate()) {
+                          setState(() {
+                            name = nameController.text;
+
+                            pass = passwordController.text;
+                            addUser();
+                            clearText();
+                          });
+                        }
+
+                        newPassword1 = password.randomPassword(
+                            letters: _isWithLetters=true,
+                            numbers: _isWithNumbers=false,
+                            passwordLength: _passwordChars,
+                            specialChar: _isWithSpecial=false,
+                            uppercase: _isWithUppercase=true);
+                        newPassword2 = password.randomPassword(
+                            letters: _isWithLetters=false,
+                            numbers: _isWithNumbers=true,
+                            passwordLength:_passwordDigits,
+                            specialChar: _isWithSpecial=false,
+                            uppercase: _isWithUppercase=false);
+                        newPassword = newPassword1+ newPassword2;
+
+                        print(newPassword);
+                        double passwordStrength =
+                        password.checkPassword(password: newPassword);
+
+
+                        setState(() {});
+                      },
+                      child: Container(
+                        color: Colors.red,
+                        child: const Padding(
+                          padding: EdgeInsets.all(8.0),
                           child: Text(
-                            'Hint:',
-                            style: TextStyle(color: _color, fontSize: 25),
+                            'Generator Password',
+                            style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
                         ),
                       )),
-                if (newPassword.isNotEmpty)
-                  Center(
-                      child: SingleChildScrollView(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  FlatButton(
+                      onPressed: () {
+
+
+                        setState(() {});
+                      },
+                      child: Container(
+                        color: Colors.red,
+                        child: const Padding(
+                          padding: EdgeInsets.all(8.0),
                           child: Text(
-                            newPassword,
-                            style: TextStyle(color: _color, fontSize: 25),
+                            'Save',
+                            style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
                         ),
                       )),
-              ],
-            )),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  if (newPassword.isNotEmpty)
+                    Center(
+                        child: SingleChildScrollView(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Hint:',
+                              style: TextStyle(color: _color, fontSize: 25),
+                            ),
+                          ),
+                        )),
+                  if (newPassword.isNotEmpty)
+                    Center(
+                        child: SingleChildScrollView(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              newPassword,
+                              style: TextStyle(color: _color, fontSize: 25),
+                            ),
+                          ),
+                        )),
+                ],
+              )),
+        ),
       ),
     );
   }
