@@ -107,7 +107,7 @@ double _passwordChars=4;
                               ),
                               filled: true,
                               fillColor: Colors.grey[300],
-                              labelText: 'Enter Your Name',
+                              labelText: 'Enter Your Password Hint',
                               labelStyle: const TextStyle(color: Colors.blue),
                             ),
                             keyboardType: TextInputType.text,
@@ -137,15 +137,7 @@ double _passwordChars=4;
                         ),
                         FlatButton(
                             onPressed: () {
-                              if (_formKey.currentState.validate()) {
-                                setState(() {
-                                  name = nameController.text;
 
-                                  pass = passwordController.text;
-                                  addUser();
-                                  clearText();
-                                });
-                              }
 
                               newPassword1 = password.randomPassword(
                                   letters: _isWithLetters=true,
@@ -160,7 +152,10 @@ double _passwordChars=4;
                                   specialChar: _isWithSpecial=false,
                                   uppercase: _isWithUppercase=false);
                               newPassword = newPassword1+ newPassword2;
-
+                              List<String> result = newPassword.split('');
+                              result.shuffle();
+                              var stringList = result.join("");
+                              newPassword=stringList;
                               print(newPassword);
                               double passwordStrength =
                               password.checkPassword(password: newPassword);
@@ -183,7 +178,14 @@ double _passwordChars=4;
                         ),
                         FlatButton(
                             onPressed: () {
-
+                              if (_formKey.currentState.validate()) {
+                                setState(() {
+                                  name = nameController.text;
+                                  pass = passwordController.text;
+                                  addUser();
+                                  clearText();
+                                });
+                              }
 
                               setState(() {});
                             },

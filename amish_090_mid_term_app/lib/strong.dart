@@ -31,6 +31,43 @@ class _StrongState extends State<Strong> {
   double _passwordDigits = 4;
   double _passwordSymbols = 4;
   final password = RandomPasswordGenerator();
+
+  final _formKey = GlobalKey<FormState>();
+
+  var name = "";
+  var pass = "";
+
+  // Create a text controller and use it to retrieve the current value
+  // of the TextField.
+  final nameController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    nameController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  clearText() {
+    nameController.clear();
+    passwordController.clear();
+  }
+
+  // Adding Student
+  // CollectionReference students =
+  // FirebaseFirestore.instance.collection('students');
+  CollectionReference students =
+  FirebaseFirestore.instance.collection('students');
+  Future<void> addUser() {
+    return students
+        .add({'name': name, 'pass': pass})
+        .then((value) => print('User Added'))
+        .catchError((error) => print('Failed to Add user: $error'));
+  }
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+
   @override
   void initState() {
     super.initState();
@@ -54,8 +91,10 @@ class _StrongState extends State<Strong> {
         appBar: AppBar(
           title: const Text('Strong Password Generator'),
         ),
-        body: Center(
-          child:ListView(
+        body: Form(
+          key: _formKey,
+          child: Center(
+            child:ListView(
               children: [
                 Column(
                   children: [
@@ -97,7 +136,7 @@ class _StrongState extends State<Strong> {
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: TextField(
-
+                        controller: nameController,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(25.0),
@@ -105,7 +144,7 @@ class _StrongState extends State<Strong> {
                           ),
                           filled: true,
                           fillColor: Colors.grey[300],
-                          labelText: 'Enter Your Name',
+                          labelText: 'Enter Your Password Hint',
                           labelStyle: const TextStyle(color: Colors.blue),
                         ),
                         keyboardType: TextInputType.text,
@@ -114,7 +153,7 @@ class _StrongState extends State<Strong> {
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: TextField(
-
+                        controller: passwordController,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(25.0),
@@ -310,14 +349,19 @@ class _StrongState extends State<Strong> {
                             ),
                           ),
                         )),
-                    const SizedBox(
-                      height: 3,
-                    ),
+
                     FlatButton(
                         onPressed: () {
+                          if (_formKey.currentState.validate()) {
+                            setState(() {
+                              name = nameController.text;
+                              pass = passwordController.text;
+                              addUser();
+                              clearText();
+                            });
+                          }
 
 
-                          setState(() {});
                         },
                         child: Container(
                           color: Colors.red,
@@ -357,8 +401,9 @@ class _StrongState extends State<Strong> {
                   ],
                 )
               ],
-          ),
             ),
+          ),
+        ),
       ),
     );
   }
