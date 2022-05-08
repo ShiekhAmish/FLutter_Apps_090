@@ -66,7 +66,7 @@ class _StrongState extends State<Strong> {
         .then((value) => print('User Added'))
         .catchError((error) => print('Failed to Add user: $error'));
   }
-  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+
 
   @override
   void initState() {

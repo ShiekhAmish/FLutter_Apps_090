@@ -5,10 +5,7 @@ import 'package:random_password_generator/random_password_generator.dart';
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  runApp(Simple());
-}
+
 class Simple extends StatefulWidget {
 
 
@@ -28,7 +25,7 @@ class _SimpleState extends State<Simple> {
   String newPassword2 = '';
   Color _color = Colors.blue;
   String isOk = '';
-  final TextEditingController _passwordLength = TextEditingController();
+
 double _passwordChars=4;
   double _passwordDigits=4;
   final password = RandomPasswordGenerator();
@@ -77,7 +74,7 @@ double _passwordChars=4;
         .then((value) => print('User Added'))
         .catchError((error) => print('Failed to Add user: $error'));
   }
-  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -89,7 +86,7 @@ double _passwordChars=4;
         body: Form(
           key: _formKey,
           child: Center(
-            child:Expanded(
+
                 child: ListView(
                   children: [
                      Column(
@@ -233,7 +230,7 @@ double _passwordChars=4;
                     ),
                   ],
                 ),
-            ),
+
               ),
         ),
       ),
