@@ -1,16 +1,11 @@
-# amish_090_mid_term_app
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![alt text](https://github.com/ShiekhAmish/FLutter_Apps_090/blob/main/MidTermAppScreenShots/Screenshot_2022-05-09-02-43-51-094_com.miui.home.jpg)
+![alt text](https://github.com/ShiekhAmish/FLutter_Apps_090/blob/main/MidTermAppScreenShots/Screenshot_2022-05-09-02-44-11-383_com.example.amish_090_mid_term_app.jpg)
+![alt text](https://github.com/ShiekhAmish/FLutter_Apps_090/blob/main/MidTermAppScreenShots/Screenshot_2022-05-09-02-44-32-418_com.example.amish_090_mid_term_app.jpg)
+![alt text](https://github.com/ShiekhAmish/FLutter_Apps_090/blob/main/MidTermAppScreenShots/Screenshot_2022-05-09-02-44-44-358_com.example.amish_090_mid_term_app.jpg)
+![alt text](https://github.com/ShiekhAmish/FLutter_Apps_090/blob/main/MidTermAppScreenShots/Screenshot_2022-05-09-02-44-56-253_com.example.amish_090_mid_term_app.jpg)
+![alt text](https://github.com/ShiekhAmish/FLutter_Apps_090/blob/main/MidTermAppScreenShots/Screenshot_2022-05-09-02-45-10-087_com.example.amish_090_mid_term_app.jpg)
+![alt text](https://github.com/ShiekhAmish/FLutter_Apps_090/blob/main/MidTermAppScreenShots/Screenshot_2022-05-09-02-45-38-833_com.example.amish_090_mid_term_app.jpg)
+![alt text](https://github.com/ShiekhAmish/FLutter_Apps_090/blob/main/MidTermAppScreenShots/Screenshot_2022-05-09-02-45-47-764_com.example.amish_090_mid_term_app.jpg)
+![alt text](https://github.com/ShiekhAmish/FLutter_Apps_090/blob/main/MidTermAppScreenShots/Screenshot_2022-05-09-02-45-53-564_com.example.amish_090_mid_term_app.jpg)
+![alt text](https://github.com/ShiekhAmish/FLutter_Apps_090/blob/main/MidTermAppScreenShots/Screenshot_2022-05-09-02-45-57-796_com.example.amish_090_mid_term_app.jpg)
+![alt text](https://github.com/ShiekhAmish/FLutter_Apps_090/blob/main/MidTermAppScreenShots/Screenshot_2022-05-09-02-46-06-433_com.example.amish_090_mid_term_app.jpg)
