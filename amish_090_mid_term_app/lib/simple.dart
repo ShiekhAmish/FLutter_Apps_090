@@ -5,6 +5,10 @@ import 'package:random_password_generator/random_password_generator.dart';
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(Simple());
+}
 class Simple extends StatefulWidget {
 
 
@@ -13,6 +17,7 @@ class Simple extends StatefulWidget {
 }
 
 class _SimpleState extends State<Simple> {
+
   bool _isWithLetters = true;
   bool _isWithUppercase = false;
   bool _isWithNumbers = false;
@@ -97,7 +102,7 @@ double _passwordChars=4;
                           height: 20,
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(15.0),
                           child: TextField(
                             controller: nameController,
                             decoration: InputDecoration(
